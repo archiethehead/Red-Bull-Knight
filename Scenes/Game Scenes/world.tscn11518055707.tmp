@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://6lw2rs6gdyg3"]
+
+[ext_resource type="PackedScene" uid="uid://cto5vhf8je43u" path="res://Scenes/Maps/test_map.tscn" id="1_3w41l"]
+[ext_resource type="PackedScene" uid="uid://0rfuwdjdrqfs" path="res://Scenes/characters/player_character.tscn" id="2_rb4sv"]
+[ext_resource type="PackedScene" uid="uid://dxpndiwc6r55m" path="res://Scenes/characters/enemy_character.tscn" id="3_rb4sv"]
+
+[sub_resource type="GDScript" id="GDScript_qfhc1"]
+script/source = "extends Node2D
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(_delta: float) -> void:
+	pass
+"
+
+[node name="Game" type="Node2D"]
+script = SubResource("GDScript_qfhc1")
+
+[node name="TileMap" parent="." instance=ExtResource("1_3w41l")]
+position = Vector2(106, 120)
+
+[node name="player_character" parent="." groups=["player"] instance=ExtResource("2_rb4sv")]
+position = Vector2(88, 99)
+
+[node name="camera" type="Camera2D" parent="player_character"]
+position = Vector2(-6, 21)
+zoom = Vector2(4, 4)
+
+[node name="enemy_character" parent="." groups=["enemy"] instance=ExtResource("3_rb4sv")]
+position = Vector2(333, 105)
