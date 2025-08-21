@@ -666,7 +666,7 @@ script = ExtResource("1_cmdk4")
 [node name="player_character_sprite" type="AnimatedSprite2D" parent="." groups=["player"]]
 position = Vector2(1, 2)
 sprite_frames = SubResource("SpriteFrames_q5hbr")
-animation = &"idle_animation"
+animation = &"death_animation"
 autoplay = "idle_animation"
 script = ExtResource("9_ev8tq")
 

@@ -33,13 +33,13 @@ text = "Red Bull Knight"
 
 [node name="version_lable" type="Label" parent="."]
 layout_mode = 0
-offset_left = 856.0
+offset_left = 712.0
 offset_top = 544.0
 offset_right = 1086.0
 offset_bottom = 595.0
 theme_override_fonts/font = SubResource("SystemFont_ysolh")
 theme_override_font_sizes/font_size = 35
-text = "Alpha build"
+text = "Prototype Build 1.3"
 horizontal_alignment = 2
 
 [node name="Button" type="Button" parent="."]

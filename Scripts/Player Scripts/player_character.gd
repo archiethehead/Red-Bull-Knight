@@ -12,13 +12,16 @@ var attack_damage = 10
 var attack_cooldown = 0.25
 var can_attack = true
 var attack_2 = false
-var HEALTH = 100
+var health = 5
 var enemies_attackable = []
 var dead = false
 
-
 #Physics handler
 func _physics_process(delta: float) -> void:
+	if health <= 0:
+		_die()
+
+	#Variables
 	var HEAD = $head_collider
 	var TORSO = $torso_collider
 	var colliding = test_move(global_transform, Vector2(0, -10))
@@ -68,10 +71,8 @@ func _physics_process(delta: float) -> void:
 
 #Combat handler
 func _perform_attack():
-	print(enemies_attackable)
 	if can_attack:
 		if not enemies_attackable.is_empty():
-			print("c")
 			for enemy in enemies_attackable:
 				enemy._die()
 		can_attack = false
@@ -81,19 +82,22 @@ func _perform_attack():
 		attack_2 = !attack_2
 
 func _die():
-	dead = true
-	$game_camera.position_smoothing_enabled = false
-	$player_character_sprite.play("death_animation")
-	await $player_character_sprite.animation_finished
-	Engine.time_scale = 1
+	if not dead:
+		Engine.time_scale = 0.2
+		dead = true
+		$game_camera.position_smoothing_enabled = false
+		$player_character_sprite.play("death_animation")
+		await $player_character_sprite.animation_finished
+		Engine.time_scale = 1
+		get_tree().reload_current_scene()
 
+func _modify_health(units):
+	health += units
 
 func _on_hitbox_body_entered(body):
 	if body.is_in_group("enemy"):
 		enemies_attackable.append(body)
-		print("a")
 
 func _on_hitbox_body_exited(body):
 	if body.is_in_group("enemy"):
 		enemies_attackable.erase(body)
-		print("b")

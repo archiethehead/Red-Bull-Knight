@@ -425,9 +425,9 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_a5awy")
 }],
-"loop": true,
+"loop": false,
 "name": &"death_animation",
-"speed": 10.0
+"speed": 15.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -573,7 +573,7 @@ animations = [{
 radius = 5.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nelyt"]
-size = Vector2(35, 43)
+size = Vector2(96, 43)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8rpoh"]
 size = Vector2(209, 57)
@@ -584,7 +584,7 @@ script = ExtResource("1_nkyop")
 [node name="enemy_character_sprite" type="AnimatedSprite2D" parent="." groups=["enemy"]]
 position = Vector2(4, 16)
 sprite_frames = SubResource("SpriteFrames_sd2f7")
-animation = &"idle_animation"
+animation = &"death_animation"
 autoplay = "idle_animation"
 script = ExtResource("11_nkyop")
 
@@ -606,10 +606,11 @@ shape = SubResource("CircleShape2D_t6ptf")
 
 [node name="attack_collider" type="Area2D" parent="." groups=["enemy"]]
 position = Vector2(6, 14)
+monitorable = false
 
 [node name="attack_collider_shape" type="CollisionShape2D" parent="attack_collider" groups=["enemy"]]
 visibility_layer = 1023
-position = Vector2(-7.5, 20.5)
+position = Vector2(-6, 20.5)
 shape = SubResource("RectangleShape2D_nelyt")
 
 [node name="player_detector" type="Area2D" parent="." groups=["enemy"]]
@@ -620,4 +621,6 @@ collision_mask = 255
 position = Vector2(0, 28)
 shape = SubResource("RectangleShape2D_8rpoh")
 
+[connection signal="body_entered" from="attack_collider" to="." method="_on_attack_collider_body_entered"]
+[connection signal="body_exited" from="attack_collider" to="." method="_on_attack_collider_body_exited"]
 [connection signal="body_entered" from="player_detector" to="." method="_on_player_detector_body_entered"]

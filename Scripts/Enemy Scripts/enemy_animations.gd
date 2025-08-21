@@ -39,6 +39,8 @@ func _update_animation(vel, grounded, crouched, attack, roll, animation_speed, d
 				play("jump_animation")
 			elif vel.y > 0:
 				play("fall_animation")
+	else:
+		_death_animation()
 
 #Attack animation
 func _attack_animation(vel, attack_an, crouched, dead):
@@ -56,9 +58,7 @@ func _attack_animation(vel, attack_an, crouched, dead):
 					play("attack_animation")
 				else:
 					play("attack_animation_2")
-		await animation_finished
+		
 
 func _death_animation():
-	await get_tree().create_timer(0.5).timeout
 	play("death_animation")
-	queue_free()

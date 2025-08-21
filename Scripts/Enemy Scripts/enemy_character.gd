@@ -14,6 +14,7 @@ var can_attack = true
 var attack_2 = false
 var chasing = false
 var player = Node
+var player_attackable = false
 var previous_x = 0
 var stuck_timer = 0.0
 var dead = false
@@ -50,7 +51,7 @@ func _physics_process(delta: float) -> void:
 					DIRECTION = -1
 				velocity.x = SPEED * DIRECTION
 			
-			if not floor_detector.is_colliding() and not jumping:
+			if not dead and not floor_detector.is_colliding() and not jumping:
 				SPEED = 150
 				jumping = true
 				velocity.y = JUMP_VELOCITY
@@ -66,7 +67,8 @@ func _physics_process(delta: float) -> void:
 				DIRECTION *= -1
 				_detector_reposition()
 		move_and_slide()
-		$enemy_character_sprite._update_animation(velocity,is_on_floor(), CROUCHED, can_attack, ROLLING, animation_speed, dead) 
+		if not dead:
+			$enemy_character_sprite._update_animation(velocity,is_on_floor(), CROUCHED, can_attack, ROLLING, animation_speed, dead) 
 
 func _detector_reposition():
 	if $enemy_character_sprite.flip_h == true:
@@ -81,6 +83,8 @@ func _detector_reposition():
 #Combat handler
 func _attack_player():
 	if can_attack:
+		if player_attackable:
+			player._modify_health(-1)
 		can_attack = false
 		$enemy_character_sprite._attack_animation(velocity, attack_2, CROUCHED, dead)
 		await get_tree().create_timer(1).timeout
@@ -93,8 +97,18 @@ func _die():
 	velocity.y = 0
 	$body_collider.disabled = true
 	$enemy_character_sprite._death_animation()
+	await get_tree().create_timer(3).timeout
 
 func _on_player_detector_body_entered(body):
 	if body.is_in_group("player"):
 		player = body
 		chasing = true
+
+
+func _on_attack_collider_body_entered(body):
+	if body.is_in_group("player"):
+		player_attackable = true
+
+func _on_attack_collider_body_exited(body):
+	if body.is_in_group("player"):
+		player_attackable = false
