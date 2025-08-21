@@ -1,5 +1,10 @@
 extends AnimatedSprite2D
 
+
+#Variables
+@onready var wall_detector = $wall_detector
+@onready var floor_detector = $floor_detector
+
 func _update_animation(vel, grounded, crouched, attack, roll, animation_speed):
 	speed_scale = animation_speed
 	var run = "run_animation"
@@ -14,6 +19,10 @@ func _update_animation(vel, grounded, crouched, attack, roll, animation_speed):
 	#Run animation
 	if vel.x != 0:
 		flip_h = vel.x < 0
+		if flip_h == true:
+			offset.x = -10.0
+		else:
+			offset.x = 0
 		if attack == true:
 			if roll == false:
 				play(run)

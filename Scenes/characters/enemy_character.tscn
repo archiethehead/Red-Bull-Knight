@@ -13,8 +13,6 @@
 [ext_resource type="Texture2D" uid="uid://cgqauc2q1i2y3" path="res://Assets/player_assets/Colour1/Outline/120x80_PNGSheets/_Roll.png" id="9_nkyop"]
 [ext_resource type="Script" uid="uid://bj6tfi21xetug" path="res://Scripts/Enemy Scripts/enemy_animations.gd" id="11_nkyop"]
 
-[sub_resource type="Curve2D" id="Curve2D_nkyop"]
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_vc5aa"]
 atlas = ExtResource("1_t6ptf")
 region = Rect2(0, 0, 120, 80)
@@ -529,56 +527,50 @@ radius = 5.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nelyt"]
 size = Vector2(35, 43)
 
-[node name="enemy_character_path" type="Path2D" groups=["enemy"]]
-curve = SubResource("Curve2D_nkyop")
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8rpoh"]
+size = Vector2(209, 57)
 
-[node name="enemy_character_pathfinder" type="PathFollow2D" parent="."]
-
-[node name="enemy_character" type="CharacterBody2D" parent="enemy_character_pathfinder"]
+[node name="enemy_character" type="CharacterBody2D"]
 script = ExtResource("1_nkyop")
 
-[node name="enemy_character_sprite" type="AnimatedSprite2D" parent="enemy_character_pathfinder/enemy_character" groups=["enemy"]]
-position = Vector2(1, 2)
+[node name="enemy_character_sprite" type="AnimatedSprite2D" parent="." groups=["enemy"]]
+position = Vector2(4, 16)
 sprite_frames = SubResource("SpriteFrames_sd2f7")
-animation = &"death_animation"
+animation = &"idle_animation"
 autoplay = "idle_animation"
-frame_progress = 0.0415787
 script = ExtResource("11_nkyop")
 
-[node name="torso_collider" type="CollisionShape2D" parent="enemy_character_pathfinder/enemy_character" groups=["enemy"]]
+[node name="wall_detector" type="RayCast2D" parent="enemy_character_sprite"]
+position = Vector2(4, 24)
+target_position = Vector2(24, 0)
+collide_with_areas = true
+
+[node name="floor_detector" type="RayCast2D" parent="enemy_character_sprite"]
+position = Vector2(12, 40)
+target_position = Vector2(0, 16)
+
+[node name="body_collider" type="CollisionShape2D" parent="." groups=["enemy"]]
 visible = false
-position = Vector2(-3, 23)
+position = Vector2(0, 35)
+scale = Vector2(2.38955, 4.17661)
 shape = SubResource("CircleShape2D_t6ptf")
 
-[node name="feet_collider" type="CollisionShape2D" parent="enemy_character_pathfinder/enemy_character" groups=["enemy"]]
+[node name="attack_collider" type="Area2D" parent="." groups=["enemy"]]
 visible = false
-position = Vector2(-3, 37)
-shape = SubResource("CircleShape2D_t6ptf")
+position = Vector2(6, 14)
 
-[node name="head_collider" type="CollisionShape2D" parent="enemy_character_pathfinder/enemy_character" groups=["enemy"]]
+[node name="attack_collider_shape" type="CollisionShape2D" parent="attack_collider" groups=["enemy"]]
 visible = false
-position = Vector2(-3, 11)
-shape = SubResource("CircleShape2D_t6ptf")
-
-[node name="player_detector" type="RayCast2D" parent="enemy_character_pathfinder/enemy_character"]
-visible = false
-position = Vector2(0, 11)
-target_position = Vector2(60, 0)
-
-[node name="angled_player_detector" type="RayCast2D" parent="enemy_character_pathfinder/enemy_character/player_detector"]
-position = Vector2(-3, 0)
-target_position = Vector2(66, -40)
-
-[node name="up_player_detector" type="RayCast2D" parent="enemy_character_pathfinder/enemy_character/player_detector"]
-position = Vector2(-3, 0)
-target_position = Vector2(-1, -48)
-
-[node name="attack_collider" type="Area2D" parent="enemy_character_pathfinder/enemy_character" groups=["enemy"]]
-visible = false
-
-[node name="attack_collider_shape" type="CollisionShape2D" parent="enemy_character_pathfinder/enemy_character/attack_collider" groups=["enemy"]]
 visibility_layer = 1023
 position = Vector2(-7.5, 20.5)
 shape = SubResource("RectangleShape2D_nelyt")
 
-[node name="player_chaser" type="NavigationAgent2D" parent="enemy_character_pathfinder/enemy_character"]
+[node name="player_chaser" type="NavigationAgent2D" parent="."]
+
+[node name="player_detector" type="Area2D" parent="."]
+visible = false
+
+[node name="player_detector_collider" type="CollisionShape2D" parent="player_detector"]
+visible = false
+position = Vector2(0, 28)
+shape = SubResource("RectangleShape2D_8rpoh")

@@ -1,7 +1,10 @@
-CollisionShape2D
+Label
 Node
-Timer
+TextureRect
+RayCast2D
 Area2D
+CollisionShape2D
+Timer
 Camera2D
 PathFollow2D
 CharacterBody2D
@@ -10,5 +13,3 @@ NavigationAgent2D
 Sprite2D
 AudioStreamPlayer2D
 AudioListener2D
-PointLight2D
-Node2D

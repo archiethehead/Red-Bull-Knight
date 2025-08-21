@@ -63,7 +63,8 @@ func _physics_process(delta: float) -> void:
 			ROLLING = false
 		
 	move_and_slide()
-	$player_character_sprite._update_animation(velocity,is_on_floor(), CROUCHED, can_attack, ROLLING, dead)
+	if not dead:
+		$player_character_sprite._update_animation(velocity,is_on_floor(), CROUCHED, can_attack, ROLLING, dead)
 
 
 #Combat handler

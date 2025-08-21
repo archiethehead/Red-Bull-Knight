@@ -3,23 +3,21 @@ extends CharacterBody2D
 #Physics and AI variables
 var SPEED = 150
 var JUMP_VELOCITY = -400
-var PATROL_DISTANCE = 20
 var CROUCHED = false
 var ROLLING = false
 var DIRECTION = -1
-var START_POSITION: Vector2
-var left_bound: float
-var right_bound: float
 var animation_speed =  1
 
 #Combat variables
-var chase_speed =  120
 var can_attack = true
 var chasing = false
 var player = Node
 var previous_x = 0
 var stuck_timer = 0.0
 var dead = false
+@onready var wall_detector = $enemy_character_sprite/wall_detector
+@onready var floor_detector = $enemy_character_sprite/floor_detector
+
 
 #Physics and AI handler
 func _physics_process(delta: float) -> void:
@@ -27,7 +25,6 @@ func _physics_process(delta: float) -> void:
 		#Gravity logic
 		if not is_on_floor():
 			velocity += get_gravity() * delta
-		velocity.x = DIRECTION * SPEED
 		
 		#Stuck logic
 		if abs(global_position.x - previous_x) < 1.0 and is_on_floor():
@@ -41,26 +38,32 @@ func _physics_process(delta: float) -> void:
 			stuck_timer = 0.0 
 		
 		#Detection logic
-		$player_detector.target_position = Vector2(100 * DIRECTION, 0)
-		$player_detector/angled_player_detector.target_position = Vector2(100 * DIRECTION, -100)
-		if $player_detector.is_colliding():
-			var asset = $player_detector.get_collider()
-			if asset.is_in_group("player"):
-				player = asset
-				chasing = true
-			else:
-				player = null
-				chasing = false
-				
+		pass
+		
+		#Chase and patrol logic
+		if chasing == true:
+			pass
+		else:
+			velocity.x = SPEED * DIRECTION
+			if wall_detector.is_colliding() or not floor_detector.is_colliding():
+				DIRECTION *= -1
+				_detector_reposition()
 		move_and_slide()
 		$enemy_character_sprite._update_animation(velocity,is_on_floor(), CROUCHED, can_attack, ROLLING, animation_speed) 
 
+func _detector_reposition():
+	if $enemy_character_sprite.flip_h == true:
+		wall_detector.position.x = -12.0
+		wall_detector.target_position.x = -24.0
+		floor_detector.position.x = -20.0
+	else:
+		wall_detector.position.x = 4.0
+		wall_detector.target_position.x = 24.0
+		floor_detector.position.x = 12
+
 #Combat handler
 func _ready():
-	#var path_follow = get_node()
-	START_POSITION = global_position
-	left_bound = global_position.x - PATROL_DISTANCE
-	right_bound = global_position.x + PATROL_DISTANCE
+	pass
 
 func _die():
 	dead = true

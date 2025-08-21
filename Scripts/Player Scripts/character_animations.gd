@@ -1,5 +1,6 @@
 extends AnimatedSprite2D
 
+#Animation handler
 func _update_animation(vel, grounded, crouched, attack, roll, dead):
 	var run = "run_animation"
 	var idle = "idle_animation"
@@ -13,6 +14,10 @@ func _update_animation(vel, grounded, crouched, attack, roll, dead):
 	#Run animation
 	if vel.x != 0:
 		flip_h = vel.x < 0
+		if flip_h == true:
+			offset.x = -10.0
+		else:
+			offset.x = 0
 		if attack == true:
 			if roll == false:
 				play(run)

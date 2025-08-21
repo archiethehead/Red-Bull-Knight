@@ -1,5 +1,5 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1755622903
+::res://::1755777645
 export_presets.cfg::TextFile/TextFile::-1::1755437933::0::1::::<><><>0<>0<><>::
 icon.svg::CompressedTexture2D/CompressedTexture2D::7408391048677454334::1754939652::1754939658::1::::<><><>0<>0<>9d305ccd543a5b3845da9f04a16d9d7a<>res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex::
 ::res://Assets/::1755453568
@@ -77,24 +77,25 @@ _WallClimbNoMovement.png::CompressedTexture2D/CompressedTexture2D::4202916513342
 _WallHang.png::CompressedTexture2D/CompressedTexture2D::7395002245509728558::1633512648::1754940503::1::::<><><>0<>0<>2431d59bb0e0dbd86bee2228b4c93847<>res://.godot/imported/_WallHang.png-6c6f0a1365abf4706306fe34d29794ab.ctex::
 _WallSlide.png::CompressedTexture2D/CompressedTexture2D::2423377227566261327::1633512554::1754940503::1::::<><><>0<>0<>5100620290005f73f76208d39bdc2ea5<>res://.godot/imported/_WallSlide.png-dc25d2c9d39ee2be3c4b459810feff23.ctex::
 ::res://Scenes/::1755454374
-::res://Scenes/characters/::1755551051
-enemy_character.tscn::PackedScene::8805366253658122808::1755551051::0::1::::<><><>0<>0<><>::uid://c01a05wol745p::::res://Scripts/Enemy Scripts/enemy_character.gd<>uid://b8modi1j8ay81::::res://Assets/player_assets/Colour1/Outline/120x80_PNGSheets/_AttackNoMovement.png<>uid://csm81diydb5wo::::res://Assets/player_assets/Colour1/Outline/120x80_PNGSheets/_Attack.png<>uid://ydvdbgw5jed5::::res://Assets/player_assets/Colour1/Outline/120x80_PNGSheets/_Crouch.png<>uid://bj16h5icofdv::::res://Assets/player_assets/Colour1/Outline/120x80_PNGSheets/_CrouchWalk.png<>uid://dp1pknfv8nnwv::::res://Assets/player_assets/Colour1/Outline/120x80_PNGSheets/_Fall.png<>uid://deep0mqqys2ef::::res://Assets/player_assets/Colour1/Outline/120x80_PNGSheets/_Idle.png<>uid://b1xfek06i5m42::::res://Assets/player_assets/Colour1/Outline/120x80_PNGSheets/_Death.png<>uid://ceo5leebetl4::::res://Assets/player_assets/Colour1/Outline/120x80_PNGSheets/_Jump.png<>uid://dpspb1nv8ertn::::res://Assets/player_assets/Colour1/Outline/120x80_PNGSheets/_Run.png<>uid://cgqauc2q1i2y3::::res://Assets/player_assets/Colour1/Outline/120x80_PNGSheets/_Roll.png<>uid://bj6tfi21xetug::::res://Scripts/Enemy Scripts/enemy_animations.gd
-player_character.tscn::PackedScene::1790155974173487124::1755550889::0::1::::<><><>0<>0<><>::uid://cd0ml4w5q8q7l::::res://Scripts/Player Scripts/player_character.gd<>uid://deep0mqqys2ef::::res://Assets/player_assets/Colour1/Outline/120x80_PNGSheets/_Idle.png<>uid://b8modi1j8ay81::::res://Assets/player_assets/Colour1/Outline/120x80_PNGSheets/_AttackNoMovement.png<>uid://dp1pknfv8nnwv::::res://Assets/player_assets/Colour1/Outline/120x80_PNGSheets/_Fall.png<>uid://cgqauc2q1i2y3::::res://Assets/player_assets/Colour1/Outline/120x80_PNGSheets/_Roll.png<>uid://csm81diydb5wo::::res://Assets/player_assets/Colour1/Outline/120x80_PNGSheets/_Attack.png<>uid://bj16h5icofdv::::res://Assets/player_assets/Colour1/Outline/120x80_PNGSheets/_CrouchWalk.png<>uid://dpspb1nv8ertn::::res://Assets/player_assets/Colour1/Outline/120x80_PNGSheets/_Run.png<>uid://ydvdbgw5jed5::::res://Assets/player_assets/Colour1/Outline/120x80_PNGSheets/_Crouch.png<>uid://ceo5leebetl4::::res://Assets/player_assets/Colour1/Outline/120x80_PNGSheets/_Jump.png<>uid://msf8x6wmim0u::::res://Assets/player_assets/Colour1/Outline/120x80_PNGSheets/_Attack2NoMovement.png<>uid://bw7ioae3rs7mc::::res://Assets/player_assets/Colour1/Outline/120x80_PNGSheets/_CrouchAttack.png<>uid://bryqer4hhg0ss::::res://Assets/player_assets/Colour1/Outline/120x80_PNGSheets/_Attack2.png<>uid://cnur61mux2nxy::::res://Scripts/Player Scripts/character_animations.gd
-::res://Scenes/Game Scenes/::1755550889
-main_menu.tscn::PackedScene/PackedScene::2408164662629375831::1755434846::0::1::::<><><>0<>0<><>::uid://btree7hka3hvm::::res://Scripts/Game Scripts/main_menu.gd
-world.tscn::PackedScene::2199947220470049824::1755550889::0::1::::<><><>0<>0<><>::uid://cto5vhf8je43u::::res://Scenes/Map Scenes/Maps/test_map.tscn<>uid://0rfuwdjdrqfs::::res://Scenes/characters/player_character.tscn<>uid://dxpndiwc6r55m::::res://Scenes/characters/enemy_character.tscn
+::res://Scenes/characters/::1755731781
+enemy_character.tscn::PackedScene::8805366253658122808::1755731628::0::1::::<><><>0<>0<><>::uid://c01a05wol745p::::res://Scripts/Enemy Scripts/enemy_character.gd<>uid://b8modi1j8ay81::::res://Assets/player_assets/Colour1/Outline/120x80_PNGSheets/_AttackNoMovement.png<>uid://csm81diydb5wo::::res://Assets/player_assets/Colour1/Outline/120x80_PNGSheets/_Attack.png<>uid://ydvdbgw5jed5::::res://Assets/player_assets/Colour1/Outline/120x80_PNGSheets/_Crouch.png<>uid://bj16h5icofdv::::res://Assets/player_assets/Colour1/Outline/120x80_PNGSheets/_CrouchWalk.png<>uid://dp1pknfv8nnwv::::res://Assets/player_assets/Colour1/Outline/120x80_PNGSheets/_Fall.png<>uid://deep0mqqys2ef::::res://Assets/player_assets/Colour1/Outline/120x80_PNGSheets/_Idle.png<>uid://b1xfek06i5m42::::res://Assets/player_assets/Colour1/Outline/120x80_PNGSheets/_Death.png<>uid://ceo5leebetl4::::res://Assets/player_assets/Colour1/Outline/120x80_PNGSheets/_Jump.png<>uid://dpspb1nv8ertn::::res://Assets/player_assets/Colour1/Outline/120x80_PNGSheets/_Run.png<>uid://cgqauc2q1i2y3::::res://Assets/player_assets/Colour1/Outline/120x80_PNGSheets/_Roll.png<>uid://bj6tfi21xetug::::res://Scripts/Enemy Scripts/enemy_animations.gd
+player_character.tscn::PackedScene::1790155974173487124::1755731781::0::1::::<><><>0<>0<><>::uid://cd0ml4w5q8q7l::::res://Scripts/Player Scripts/player_character.gd<>uid://deep0mqqys2ef::::res://Assets/player_assets/Colour1/Outline/120x80_PNGSheets/_Idle.png<>uid://b8modi1j8ay81::::res://Assets/player_assets/Colour1/Outline/120x80_PNGSheets/_AttackNoMovement.png<>uid://dp1pknfv8nnwv::::res://Assets/player_assets/Colour1/Outline/120x80_PNGSheets/_Fall.png<>uid://cgqauc2q1i2y3::::res://Assets/player_assets/Colour1/Outline/120x80_PNGSheets/_Roll.png<>uid://csm81diydb5wo::::res://Assets/player_assets/Colour1/Outline/120x80_PNGSheets/_Attack.png<>uid://bj16h5icofdv::::res://Assets/player_assets/Colour1/Outline/120x80_PNGSheets/_CrouchWalk.png<>uid://dpspb1nv8ertn::::res://Assets/player_assets/Colour1/Outline/120x80_PNGSheets/_Run.png<>uid://ydvdbgw5jed5::::res://Assets/player_assets/Colour1/Outline/120x80_PNGSheets/_Crouch.png<>uid://ceo5leebetl4::::res://Assets/player_assets/Colour1/Outline/120x80_PNGSheets/_Jump.png<>uid://msf8x6wmim0u::::res://Assets/player_assets/Colour1/Outline/120x80_PNGSheets/_Attack2NoMovement.png<>uid://bw7ioae3rs7mc::::res://Assets/player_assets/Colour1/Outline/120x80_PNGSheets/_CrouchAttack.png<>uid://bryqer4hhg0ss::::res://Assets/player_assets/Colour1/Outline/120x80_PNGSheets/_Attack2.png<>uid://cnur61mux2nxy::::res://Scripts/Player Scripts/character_animations.gd<>uid://b1xfek06i5m42::::res://Assets/player_assets/Colour1/Outline/120x80_PNGSheets/_Death.png
+::res://Scenes/Game Scenes/::1755623062
+main_menu.tscn::PackedScene/PackedScene::2408164662629375831::1755623062::0::1::::<><><>0<>0<><>::uid://btree7hka3hvm::::res://Scripts/Game Scripts/main_menu.gd
 ::res://Scenes/Map Scenes/::1755454392
-::res://Scenes/Map Scenes/Map Assets/::1755454418
+::res://Scenes/Map Scenes/Map Assets/::1755731628
 side by side platform.tscn::PackedScene/PackedScene::6521669445587608618::1755454418::0::1::::<><><>0<>0<><>::
-::res://Scenes/Map Scenes/Maps/::1755550889
-test_map.tscn::PackedScene::6137190073419711824::1755550889::0::1::::<><><>0<>0<><>::uid://drvjwf4btxikl::::res://Assets/map_assets/Dungeon Tile Set.png<>uid://byuydt2phak4l::::res://Assets/audio_assets/Level_1.mp3
-::res://Scripts/::1755439872
-::res://Scripts/Enemy Scripts/::1755550866
-enemy_animations.gd::GDScript/GDScript::3083279001752089866::1755448974::0::1::::<>AnimatedSprite2D<><>0<>0<><>::
-enemy_character.gd::GDScript::6581282535128477679::1755550865::0::1::::<>CharacterBody2D<><>0<>0<><>::
-::res://Scripts/Game Scripts/::1755433421
-main_menu.gd::GDScript/GDScript::3755354837797717074::1755433421::0::1::::<>Control<><>0<>0<><>::
-world_script.gd::GDScript/GDScript::950887513601003615::1755377550::0::1::::<>Node2D<><>0<>0<><>::
-::res://Scripts/Player Scripts/::1755449137
-character_animations.gd::GDScript/GDScript::5727672823335178274::1755441967::0::1::::<>AnimatedSprite2D<><>0<>0<><>::
-player_character.gd::GDScript/GDScript::5035767148346557139::1755449137::0::1::::<>CharacterBody2D<><>0<>0<><>::
+zill_zone.tscn::PackedScene::8262131244923853671::1755731628::0::1::::<><><>0<>0<><>::uid://c17nskkeiab5k::::res://Scripts/Map Scripts/zill_zone.gd
+::res://Scenes/Map Scenes/Maps/::1755731628
+test_map.tscn::PackedScene::6137190073419711824::1755731628::0::1::::<><><>0<>0<><>::uid://drvjwf4btxikl::::res://Assets/map_assets/Dungeon Tile Set.png<>uid://byuydt2phak4l::::res://Assets/audio_assets/Level_1.mp3<>uid://0rfuwdjdrqfs::::res://Scenes/characters/player_character.tscn<>uid://dxpndiwc6r55m::::res://Scenes/characters/enemy_character.tscn<>uid://dpyidhh5jptpv::::res://Scenes/Map Scenes/Map Assets/zill_zone.tscn
+::res://Scripts/::1755623755
+::res://Scripts/Enemy Scripts/::1755730603
+enemy_animations.gd::GDScript/GDScript::3083279001752089866::1755642778::0::1::::<>AnimatedSprite2D<><>0<>0<><>::
+enemy_character.gd::GDScript::6581282535128477679::1755730603::0::1::::<>CharacterBody2D<><>0<>0<><>::
+::res://Scripts/Game Scripts/::1755623062
+main_menu.gd::GDScript/GDScript::3755354837797717074::1755623062::0::1::::<>Control<><>0<>0<><>::
+::res://Scripts/Map Scripts/::1755642818
+zill_zone.gd::GDScript/GDScript::6664633396175189258::1755642818::0::1::::<>Area2D<><>0<>0<><>::
+::res://Scripts/Player Scripts/::1755731781
+character_animations.gd::GDScript::5727672823335178274::1755731781::0::1::::<>AnimatedSprite2D<><>0<>0<><>::
+player_character.gd::GDScript::5035767148346557139::1755731626::0::1::::<>CharacterBody2D<><>0<>0<><>::

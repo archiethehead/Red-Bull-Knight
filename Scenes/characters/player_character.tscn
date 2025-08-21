@@ -666,7 +666,7 @@ script = ExtResource("1_cmdk4")
 [node name="player_character_sprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(1, 2)
 sprite_frames = SubResource("SpriteFrames_q5hbr")
-animation = &"death_animation"
+animation = &"idle_animation"
 autoplay = "idle_animation"
 script = ExtResource("9_ev8tq")
 
@@ -683,6 +683,7 @@ position = Vector2(-3, 11)
 shape = SubResource("CircleShape2D_w775p")
 
 [node name="hitbox" type="Area2D" parent="."]
+position = Vector2(-4, 0)
 collision_layer = 255
 collision_mask = 255
 
