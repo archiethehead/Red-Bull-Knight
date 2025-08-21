@@ -1,8 +1,9 @@
-[gd_scene load_steps=82 format=3 uid="uid://dxpndiwc6r55m"]
+[gd_scene load_steps=89 format=3 uid="uid://dxpndiwc6r55m"]
 
 [ext_resource type="Script" uid="uid://c01a05wol745p" path="res://Scripts/Enemy Scripts/enemy_character.gd" id="1_nkyop"]
 [ext_resource type="Texture2D" uid="uid://b8modi1j8ay81" path="res://Assets/player_assets/Colour1/Outline/120x80_PNGSheets/_AttackNoMovement.png" id="1_t6ptf"]
 [ext_resource type="Texture2D" uid="uid://csm81diydb5wo" path="res://Assets/player_assets/Colour1/Outline/120x80_PNGSheets/_Attack.png" id="2_uo8ke"]
+[ext_resource type="Texture2D" uid="uid://msf8x6wmim0u" path="res://Assets/player_assets/Colour1/Outline/120x80_PNGSheets/_Attack2NoMovement.png" id="3_8rpoh"]
 [ext_resource type="Texture2D" uid="uid://ydvdbgw5jed5" path="res://Assets/player_assets/Colour1/Outline/120x80_PNGSheets/_Crouch.png" id="3_nkyop"]
 [ext_resource type="Texture2D" uid="uid://bj16h5icofdv" path="res://Assets/player_assets/Colour1/Outline/120x80_PNGSheets/_CrouchWalk.png" id="4_nelyt"]
 [ext_resource type="Texture2D" uid="uid://dp1pknfv8nnwv" path="res://Assets/player_assets/Colour1/Outline/120x80_PNGSheets/_Fall.png" id="5_8rpoh"]
@@ -28,6 +29,30 @@ region = Rect2(240, 0, 120, 80)
 [sub_resource type="AtlasTexture" id="AtlasTexture_dioqq"]
 atlas = ExtResource("1_t6ptf")
 region = Rect2(360, 0, 120, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pwc2u"]
+atlas = ExtResource("3_8rpoh")
+region = Rect2(0, 0, 120, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hp7r6"]
+atlas = ExtResource("3_8rpoh")
+region = Rect2(120, 0, 120, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nbvye"]
+atlas = ExtResource("3_8rpoh")
+region = Rect2(240, 0, 120, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_buyaj"]
+atlas = ExtResource("3_8rpoh")
+region = Rect2(360, 0, 120, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mit83"]
+atlas = ExtResource("3_8rpoh")
+region = Rect2(480, 0, 120, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2rmfy"]
+atlas = ExtResource("3_8rpoh")
+region = Rect2(600, 0, 120, 80)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_p3hnd"]
 atlas = ExtResource("2_uo8ke")
@@ -294,6 +319,29 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_pwc2u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hp7r6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nbvye")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_buyaj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mit83")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2rmfy")
+}],
+"loop": false,
+"name": &"attack_animation_2",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_p3hnd")
 }, {
 "duration": 1.0,
@@ -530,7 +578,7 @@ size = Vector2(35, 43)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8rpoh"]
 size = Vector2(209, 57)
 
-[node name="enemy_character" type="CharacterBody2D"]
+[node name="enemy_character" type="CharacterBody2D" groups=["enemy"]]
 script = ExtResource("1_nkyop")
 
 [node name="enemy_character_sprite" type="AnimatedSprite2D" parent="." groups=["enemy"]]
@@ -541,36 +589,35 @@ autoplay = "idle_animation"
 script = ExtResource("11_nkyop")
 
 [node name="wall_detector" type="RayCast2D" parent="enemy_character_sprite"]
+visible = false
 position = Vector2(4, 24)
 target_position = Vector2(24, 0)
 collide_with_areas = true
 
 [node name="floor_detector" type="RayCast2D" parent="enemy_character_sprite"]
+visible = false
 position = Vector2(12, 40)
 target_position = Vector2(0, 16)
 
 [node name="body_collider" type="CollisionShape2D" parent="." groups=["enemy"]]
-visible = false
 position = Vector2(0, 35)
 scale = Vector2(2.38955, 4.17661)
 shape = SubResource("CircleShape2D_t6ptf")
 
 [node name="attack_collider" type="Area2D" parent="." groups=["enemy"]]
-visible = false
 position = Vector2(6, 14)
 
 [node name="attack_collider_shape" type="CollisionShape2D" parent="attack_collider" groups=["enemy"]]
-visible = false
 visibility_layer = 1023
 position = Vector2(-7.5, 20.5)
 shape = SubResource("RectangleShape2D_nelyt")
 
-[node name="player_chaser" type="NavigationAgent2D" parent="."]
+[node name="player_detector" type="Area2D" parent="." groups=["enemy"]]
+collision_layer = 255
+collision_mask = 255
 
-[node name="player_detector" type="Area2D" parent="."]
-visible = false
-
-[node name="player_detector_collider" type="CollisionShape2D" parent="player_detector"]
-visible = false
+[node name="player_detector_collider" type="CollisionShape2D" parent="player_detector" groups=["enemy"]]
 position = Vector2(0, 28)
 shape = SubResource("RectangleShape2D_8rpoh")
+
+[connection signal="body_entered" from="player_detector" to="." method="_on_player_detector_body_entered"]

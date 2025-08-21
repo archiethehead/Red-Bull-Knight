@@ -663,31 +663,31 @@ size = Vector2(105, 39)
 [node name="player_character" type="CharacterBody2D" groups=["player"]]
 script = ExtResource("1_cmdk4")
 
-[node name="player_character_sprite" type="AnimatedSprite2D" parent="."]
+[node name="player_character_sprite" type="AnimatedSprite2D" parent="." groups=["player"]]
 position = Vector2(1, 2)
 sprite_frames = SubResource("SpriteFrames_q5hbr")
 animation = &"idle_animation"
 autoplay = "idle_animation"
 script = ExtResource("9_ev8tq")
 
-[node name="torso_collider" type="CollisionShape2D" parent="."]
+[node name="torso_collider" type="CollisionShape2D" parent="." groups=["player"]]
 position = Vector2(-3, 23)
 shape = SubResource("CircleShape2D_w775p")
 
-[node name="feet_collider" type="CollisionShape2D" parent="."]
+[node name="feet_collider" type="CollisionShape2D" parent="." groups=["player"]]
 position = Vector2(-4, 40)
 shape = SubResource("RectangleShape2D_qdpu1")
 
-[node name="head_collider" type="CollisionShape2D" parent="."]
+[node name="head_collider" type="CollisionShape2D" parent="." groups=["player"]]
 position = Vector2(-3, 11)
 shape = SubResource("CircleShape2D_w775p")
 
-[node name="hitbox" type="Area2D" parent="."]
+[node name="hitbox" type="Area2D" parent="." groups=["player"]]
 position = Vector2(-4, 0)
 collision_layer = 255
 collision_mask = 255
 
-[node name="attack_collider" type="CollisionShape2D" parent="hitbox"]
+[node name="attack_collider" type="CollisionShape2D" parent="hitbox" groups=["player"]]
 position = Vector2(0.5, 22.5)
 shape = SubResource("RectangleShape2D_ev8tq")
 

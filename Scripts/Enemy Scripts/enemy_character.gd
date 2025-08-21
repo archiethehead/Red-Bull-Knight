@@ -1,15 +1,17 @@
 extends CharacterBody2D
 
 #Physics and AI variables
-var SPEED = 150
+var SPEED = 120
 var JUMP_VELOCITY = -400
 var CROUCHED = false
 var ROLLING = false
 var DIRECTION = -1
 var animation_speed =  1
+var jumping = false
 
 #Combat variables
 var can_attack = true
+var attack_2 = false
 var chasing = false
 var player = Node
 var previous_x = 0
@@ -21,35 +23,50 @@ var dead = false
 
 #Physics and AI handler
 func _physics_process(delta: float) -> void:
-	if dead == false:
+	
+	if not dead:
 		#Gravity logic
 		if not is_on_floor():
 			velocity += get_gravity() * delta
-		
-		#Stuck logic
-		if abs(global_position.x - previous_x) < 1.0 and is_on_floor():
-			stuck_timer += delta
-		else:
-			stuck_timer = 0.0	
 
 		previous_x = global_position.x
 		if stuck_timer > 0.2:
 			velocity.y = JUMP_VELOCITY
 			stuck_timer = 0.0 
 		
-		#Detection logic
-		pass
-		
-		#Chase and patrol logic
-		if chasing == true:
-			pass
-		else:
+		#Chase logic
+		if chasing and can_attack:
+			if abs(player.global_position.x - global_position.x) <= 50:
+				velocity.x = 0
+				await get_tree().create_timer(0.2).timeout
+				if abs(player.global_position.x - global_position.x) <= 50:
+					_attack_player()
+			else:
+				if player.global_position > global_position:
+					await get_tree().create_timer(0.1).timeout
+					DIRECTION = 1
+				else:
+					await get_tree().create_timer(0.1).timeout
+					DIRECTION = -1
+				velocity.x = SPEED * DIRECTION
+			
+			if not floor_detector.is_colliding() and not jumping:
+				SPEED = 150
+				jumping = true
+				velocity.y = JUMP_VELOCITY
+				
+			if is_on_floor() and jumping:
+				SPEED = 120
+				jumping = false
+				
+		#Patrol logic
+		if not chasing and can_attack:
 			velocity.x = SPEED * DIRECTION
 			if wall_detector.is_colliding() or not floor_detector.is_colliding():
 				DIRECTION *= -1
 				_detector_reposition()
 		move_and_slide()
-		$enemy_character_sprite._update_animation(velocity,is_on_floor(), CROUCHED, can_attack, ROLLING, animation_speed) 
+		$enemy_character_sprite._update_animation(velocity,is_on_floor(), CROUCHED, can_attack, ROLLING, animation_speed, dead) 
 
 func _detector_reposition():
 	if $enemy_character_sprite.flip_h == true:
@@ -62,12 +79,22 @@ func _detector_reposition():
 		floor_detector.position.x = 12
 
 #Combat handler
-func _ready():
-	pass
+func _attack_player():
+	if can_attack:
+		can_attack = false
+		$enemy_character_sprite._attack_animation(velocity, attack_2, CROUCHED, dead)
+		await get_tree().create_timer(1).timeout
+		can_attack = true
+		attack_2 = !attack_2
 
 func _die():
 	dead = true
-	$head_collider.disabled = true
-	$torso_collider.disabled = true
-	$feet_collider.disabled = true
+	velocity.x = 0
+	velocity.y = 0
+	$body_collider.disabled = true
 	$enemy_character_sprite._death_animation()
+
+func _on_player_detector_body_entered(body):
+	if body.is_in_group("player"):
+		player = body
+		chasing = true

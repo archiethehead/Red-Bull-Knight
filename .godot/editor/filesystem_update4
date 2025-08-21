@@ -1,8 +1,7 @@
-res://Scenes/characters/player_character.tscn
-res://Scripts/Player Scripts/character_animations.gd
-res://Scenes/characters/enemy_character.tscn
 res://Scenes/Map Scenes/Maps/test_map.tscn
+res://Scripts/Enemy Scripts/enemy_character.gd
+res://Scenes/characters/enemy_character.tscn
+res://Scenes/characters/player_character.tscn
 res://Scenes/Map Scenes/Map Assets/zill_zone.tscn
 res://Scripts/Player Scripts/player_character.gd
 res://Scripts/Enemy Scripts/enemy_animations.gd
-res://Scripts/Enemy Scripts/enemy_character.gd
