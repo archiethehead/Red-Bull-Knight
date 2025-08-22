@@ -1,4 +1,4 @@
-[gd_scene load_steps=101 format=3 uid="uid://0rfuwdjdrqfs"]
+[gd_scene load_steps=102 format=3 uid="uid://0rfuwdjdrqfs"]
 
 [ext_resource type="Script" uid="uid://cd0ml4w5q8q7l" path="res://Scripts/Player Scripts/player_character.gd" id="1_cmdk4"]
 [ext_resource type="Texture2D" uid="uid://deep0mqqys2ef" path="res://Assets/player_assets/Colour1/Outline/120x80_PNGSheets/_Idle.png" id="1_qcwfp"]
@@ -159,6 +159,10 @@ region = Rect2(480, 0, 120, 80)
 [sub_resource type="AtlasTexture" id="AtlasTexture_0qkpf"]
 atlas = ExtResource("5_pypdw")
 region = Rect2(600, 0, 120, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nabve"]
+atlas = ExtResource("5_pypdw")
+region = Rect2(0, 0, 120, 80)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_th6hk"]
 atlas = ExtResource("3_p3hnd")
@@ -482,6 +486,14 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_nabve")
+}],
+"loop": true,
+"name": &"block_animation",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_th6hk")
 }],
 "loop": true,
@@ -666,7 +678,7 @@ script = ExtResource("1_cmdk4")
 [node name="player_character_sprite" type="AnimatedSprite2D" parent="." groups=["player"]]
 position = Vector2(1, 2)
 sprite_frames = SubResource("SpriteFrames_q5hbr")
-animation = &"death_animation"
+animation = &" roll_animation"
 autoplay = "idle_animation"
 script = ExtResource("9_ev8tq")
 

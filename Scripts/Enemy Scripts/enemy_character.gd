@@ -39,8 +39,8 @@ func _physics_process(delta: float) -> void:
 		if chasing and can_attack:
 			if abs(player.global_position.x - global_position.x) <= 50:
 				velocity.x = 0
-				await get_tree().create_timer(0.2).timeout
-				if abs(player.global_position.x - global_position.x) <= 50:
+				await get_tree().create_timer(0.25).timeout
+				if abs(player.global_position.x - global_position.x) <= 50 and not dead:
 					_attack_player()
 			else:
 				if player.global_position > global_position:
@@ -83,11 +83,14 @@ func _detector_reposition():
 #Combat handler
 func _attack_player():
 	if can_attack:
-		if player_attackable:
-			player._modify_health(-1)
+		if player_attackable and player.blocking == false:
+			get_parent().get_parent()._update_health(-1)
 		can_attack = false
+		if player.blocking == true:
+			player.blocking = false
+			player.block_cooldown = true
 		$enemy_character_sprite._attack_animation(velocity, attack_2, CROUCHED, dead)
-		await get_tree().create_timer(1).timeout
+		await get_tree().create_timer(0.45).timeout
 		can_attack = true
 		attack_2 = !attack_2
 

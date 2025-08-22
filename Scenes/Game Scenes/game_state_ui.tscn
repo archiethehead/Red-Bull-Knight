@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://0uldvs6gsiqw"]
+
+[sub_resource type="GDScript" id="GDScript_v6di1"]
+
+[sub_resource type="SystemFont" id="SystemFont_jc81x"]
+font_names = PackedStringArray("Perfect DOS VGA 437 Win")
+subpixel_positioning = 0
+
+[node name="game_state_UI" type="CanvasLayer"]
+script = SubResource("GDScript_v6di1")
+
+[node name="health_label" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_fonts/font = SubResource("SystemFont_jc81x")
+theme_override_font_sizes/font_size = 25
+text = "HEALTH: 5/5"

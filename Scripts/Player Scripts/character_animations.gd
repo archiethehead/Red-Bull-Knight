@@ -51,3 +51,6 @@ func _attack_animation(vel, attack_an, crouched):
 			else:
 				play("attack_animation_2")
 	await animation_finished
+
+func _block_animation():
+	play("block_animation")

@@ -1,6 +1,10 @@
+CanvasLayer
 Node
-NavigationRegion2D
 Label
+CanvasGroup
+SubViewport
+Control
+NavigationRegion2D
 TextureRect
 RayCast2D
 Area2D
@@ -8,7 +12,3 @@ CollisionShape2D
 Timer
 Camera2D
 PathFollow2D
-CharacterBody2D
-Path2D
-NavigationAgent2D
-Sprite2D

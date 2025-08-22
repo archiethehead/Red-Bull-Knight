@@ -315,7 +315,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"attack_animation",
-"speed": 10.0
+"speed": 25.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -338,7 +338,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"attack_animation_2",
-"speed": 10.0
+"speed": 25.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -355,7 +355,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"attack_animation_walk",
-"speed": 10.0
+"speed": 25.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -584,7 +584,7 @@ script = ExtResource("1_nkyop")
 [node name="enemy_character_sprite" type="AnimatedSprite2D" parent="." groups=["enemy"]]
 position = Vector2(4, 16)
 sprite_frames = SubResource("SpriteFrames_sd2f7")
-animation = &"death_animation"
+animation = &"attack_animation_walk"
 autoplay = "idle_animation"
 script = ExtResource("11_nkyop")
 
