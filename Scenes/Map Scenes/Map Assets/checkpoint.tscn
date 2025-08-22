@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=3 uid="uid://doaxa1g3ok7k5"]
+
+[ext_resource type="Texture2D" uid="uid://db268sfxv4kvx" path="res://Assets/map_assets/flag_pole.png" id="1_2kbpm"]
+[ext_resource type="Script" uid="uid://b64icay73laqk" path="res://Scripts/Map Scripts/checkpoint.gd" id="2_bcm1k"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bcm1k"]
+size = Vector2(180, 360)
+
+[sub_resource type="SystemFont" id="SystemFont_bcm1k"]
+font_names = PackedStringArray("Perfect DOS VGA 437 Win")
+subpixel_positioning = 0
+
+[node name="checkpoint" type="Sprite2D"]
+scale = Vector2(0.1, 0.0944444)
+texture = ExtResource("1_2kbpm")
+script = ExtResource("2_bcm1k")
+
+[node name="checkpoint_area" type="Area2D" parent="."]
+
+[node name="checkpoint_collider" type="CollisionShape2D" parent="checkpoint_area"]
+position = Vector2(-1.78814e-06, 2.08266e-05)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_bcm1k")
+
+[node name="checkpoint_label" type="Label" parent="."]
+visible = false
+offset_left = -190.0
+offset_top = -307.059
+offset_right = 215.0
+offset_bottom = -247.059
+theme_override_fonts/font = SubResource("SystemFont_bcm1k")
+theme_override_font_sizes/font_size = 60
+text = " CHECKPOINT "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="body_entered" from="checkpoint_area" to="." method="_on_checkpoint_area_body_entered"]

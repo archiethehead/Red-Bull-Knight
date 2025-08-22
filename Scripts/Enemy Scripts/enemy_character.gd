@@ -84,7 +84,7 @@ func _detector_reposition():
 func _attack_player():
 	if can_attack:
 		if player_attackable and player.blocking == false:
-			get_parent().get_parent()._update_health(-1)
+			GameState._update_health(-1)
 		can_attack = false
 		if player.blocking == true:
 			player.blocking = false

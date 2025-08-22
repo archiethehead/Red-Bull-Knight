@@ -1,6 +1,19 @@
+res://Scenes/Map Scenes/Maps/test_map.tscn
+res://Scenes/Map Scenes/Map Assets/red_bull.tscn
+res://Scripts/Map Scripts/red_bull.gd
 res://Scenes/characters/player_character.tscn
 res://Scenes/characters/enemy_character.tscn
-res://Scenes/Map Scenes/Maps/test_map.tscn
-res://Scenes/Game Scenes/game_state_ui.tscn
+res://Scripts/Game Scripts/game_state.gd
+res://Scenes/Game Scenes/pause_menu.tscn
+res://Scripts/Game Scripts/pause_menu.gd
+res://Scenes/Game Scenes/main_menu.tscn
 res://Scripts/Player Scripts/player_character.gd
-res://Scripts/Player Scripts/character_animations.gd
+res://Scripts/Game Scripts/main_menu.gd
+res://Scenes/Map Scenes/Map Assets/checkpoint.tscn
+res://Scripts/Map Scripts/checkpoint.gd
+res://Scripts/Map Scripts/zill_zone.gd
+res://Scenes/Game Scenes/game_state_ui.tscn
+res://Scripts/Game Scripts/game_state_ui.gd
+res://Scripts/Enemy Scripts/enemy_character.gd
+res://Scripts/Map Scripts/Maps/zill_zone.gd
+res://Scripts/Map Scripts/Maps/test_map.gd

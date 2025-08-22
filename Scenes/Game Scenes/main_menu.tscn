@@ -7,6 +7,7 @@ font_names = PackedStringArray("Perfect DOS VGA 437 Win")
 
 [sub_resource type="SystemFont" id="SystemFont_2qg6n"]
 font_names = PackedStringArray("Perfect DOS VGA 437 Win")
+subpixel_positioning = 0
 
 [node name="main_menu" type="Control"]
 layout_mode = 3
@@ -39,10 +40,10 @@ offset_right = 1086.0
 offset_bottom = 595.0
 theme_override_fonts/font = SubResource("SystemFont_ysolh")
 theme_override_font_sizes/font_size = 35
-text = "Prototype Build 1.4"
+text = "Prototype Build 1.5"
 horizontal_alignment = 2
 
-[node name="Button" type="Button" parent="."]
+[node name="start_game" type="Button" parent="."]
 layout_mode = 0
 offset_left = 448.0
 offset_top = 256.0
@@ -53,4 +54,16 @@ theme_override_fonts/font = SubResource("SystemFont_2qg6n")
 theme_override_font_sizes/font_size = 35
 text = "Start Game"
 
-[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[node name="exit_game" type="Button" parent="."]
+layout_mode = 0
+offset_left = 448.0
+offset_top = 384.0
+offset_right = 704.0
+offset_bottom = 448.0
+pivot_offset = Vector2(-608, -32)
+theme_override_fonts/font = SubResource("SystemFont_2qg6n")
+theme_override_font_sizes/font_size = 35
+text = "Exit Game"
+
+[connection signal="pressed" from="start_game" to="." method="_on_start_game_pressed"]
+[connection signal="pressed" from="exit_game" to="." method="_on_exit_game_pressed"]

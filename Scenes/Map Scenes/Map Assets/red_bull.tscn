@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://cf47rws7ojlfr"]
+
+[ext_resource type="Texture2D" uid="uid://dj7v4r3b67apt" path="res://Assets/map_assets/red_bull.png" id="1_y8unx"]
+[ext_resource type="Script" uid="uid://cjye8w3bw3how" path="res://Scripts/Map Scripts/red_bull.gd" id="2_8nwfj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d7kyy"]
+size = Vector2(500, 1300)
+
+[node name="red_bull" type="Sprite2D"]
+scale = Vector2(0.01, 0.01)
+texture = ExtResource("1_y8unx")
+script = ExtResource("2_8nwfj")
+
+[node name="red_bull_area" type="Area2D" parent="."]
+
+[node name="red_bull_collider" type="CollisionShape2D" parent="red_bull_area"]
+position = Vector2(1.19209e-05, -2.38419e-05)
+shape = SubResource("RectangleShape2D_d7kyy")
+
+[connection signal="body_entered" from="red_bull_area" to="." method="_on_area_2d_body_entered"]

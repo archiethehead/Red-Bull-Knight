@@ -20,10 +20,15 @@ var block_cooldown = false
 #Physics handler
 func _physics_process(delta: float) -> void:
 
+	
 	#Variables
 	var HEAD = $head_collider
 	var TORSO = $torso_collider
 	var colliding = test_move(global_transform, Vector2(0, -10))
+	
+	#Pause logic
+	if Input.is_action_just_pressed("escape"):
+		GameState._pause()
 	
 	#Gravity logic
 	if not is_on_floor():
@@ -104,8 +109,7 @@ func _die():
 		$player_character_sprite.play("death_animation")
 		await $player_character_sprite.animation_finished
 		Engine.time_scale = 1
-		get_tree().reload_current_scene()
-
+		GameState._reload_level()
 
 func _on_hitbox_body_entered(body):
 	if body.is_in_group("enemy"):

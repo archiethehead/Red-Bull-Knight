@@ -1,0 +1,50 @@
+[gd_scene load_steps=4 format=3 uid="uid://bmu67w1r0anm3"]
+
+[ext_resource type="Script" uid="uid://duv3shj66f06t" path="res://Scripts/Game Scripts/pause_menu.gd" id="1_h8wsg"]
+
+[sub_resource type="SystemFont" id="SystemFont_i2mpj"]
+font_names = PackedStringArray("Perfect DOS VGA 437 Win")
+
+[sub_resource type="SystemFont" id="SystemFont_h8wsg"]
+font_names = PackedStringArray("Perfect DOS VGA 437 Win")
+
+[node name="pause_menu" type="CanvasLayer"]
+visible = false
+script = ExtResource("1_h8wsg")
+
+[node name="pause_lable" type="Label" parent="."]
+offset_left = 368.0
+offset_top = 88.0
+offset_right = 790.0
+offset_bottom = 139.0
+theme_override_fonts/font = SubResource("SystemFont_i2mpj")
+theme_override_font_sizes/font_size = 50
+text = "Paused"
+horizontal_alignment = 1
+
+[node name="resume_button" type="Button" parent="."]
+process_mode = 2
+offset_left = 448.0
+offset_top = 256.0
+offset_right = 704.0
+offset_bottom = 320.0
+pivot_offset = Vector2(-608, -32)
+theme_override_fonts/font = SubResource("SystemFont_h8wsg")
+theme_override_font_sizes/font_size = 35
+disabled = true
+text = "Resume"
+
+[node name="exit_button" type="Button" parent="."]
+process_mode = 2
+offset_left = 448.0
+offset_top = 384.0
+offset_right = 704.0
+offset_bottom = 448.0
+pivot_offset = Vector2(-608, -32)
+theme_override_fonts/font = SubResource("SystemFont_h8wsg")
+theme_override_font_sizes/font_size = 35
+disabled = true
+text = "Exit"
+
+[connection signal="pressed" from="resume_button" to="." method="_on_resume_button_pressed"]
+[connection signal="pressed" from="exit_button" to="." method="_on_exit_button_pressed"]
