@@ -1,14 +1,15 @@
-res://Scripts/Map Scripts/Maps
-res://Scripts/Game Scripts
+res://Assets/audio_assets/sfx
 res://Scripts/Map Scripts
 res://Scenes/Map Scenes/Map Assets
 res://Assets/map_assets
-res://Scenes/Game Scenes
+res://Scripts/Player Scripts
+res://Scenes/Character Scenes
 res://Assets/player_assets/Colour1/Outline/120x80_PNGSheets
+res://Scripts/Game Scripts
+res://Scenes/Game Scenes
+res://Scripts/Map Scripts/Maps
 res://Assets/audio_assets
 res://Scripts/Enemy Scripts
-res://Scripts/Player Scripts
-res://Scenes/characters
 res://Scripts
 res://Scenes
 res://Assets/player_assets

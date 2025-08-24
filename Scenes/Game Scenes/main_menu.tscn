@@ -40,7 +40,7 @@ offset_right = 1086.0
 offset_bottom = 595.0
 theme_override_fonts/font = SubResource("SystemFont_ysolh")
 theme_override_font_sizes/font_size = 35
-text = "Prototype Build 1.5"
+text = "Prototype Build 1.6"
 horizontal_alignment = 2
 
 [node name="start_game" type="Button" parent="."]

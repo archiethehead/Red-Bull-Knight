@@ -1,4 +1,4 @@
-[gd_scene load_steps=89 format=3 uid="uid://dxpndiwc6r55m"]
+[gd_scene load_steps=94 format=3 uid="uid://dxpndiwc6r55m"]
 
 [ext_resource type="Script" uid="uid://c01a05wol745p" path="res://Scripts/Enemy Scripts/enemy_character.gd" id="1_nkyop"]
 [ext_resource type="Texture2D" uid="uid://b8modi1j8ay81" path="res://Assets/player_assets/Colour1/Outline/120x80_PNGSheets/_AttackNoMovement.png" id="1_t6ptf"]
@@ -13,6 +13,10 @@
 [ext_resource type="Texture2D" uid="uid://dpspb1nv8ertn" path="res://Assets/player_assets/Colour1/Outline/120x80_PNGSheets/_Run.png" id="8_8go68"]
 [ext_resource type="Texture2D" uid="uid://cgqauc2q1i2y3" path="res://Assets/player_assets/Colour1/Outline/120x80_PNGSheets/_Roll.png" id="9_nkyop"]
 [ext_resource type="Script" uid="uid://bj6tfi21xetug" path="res://Scripts/Enemy Scripts/enemy_animations.gd" id="11_nkyop"]
+[ext_resource type="AudioStream" uid="uid://cejrk4ar1bhug" path="res://Assets/audio_assets/sfx/death.mp3" id="14_ympax"]
+[ext_resource type="AudioStream" uid="uid://oujvse2yt3bx" path="res://Assets/audio_assets/sfx/walking.mp3" id="15_4u8wx"]
+[ext_resource type="AudioStream" uid="uid://cyvu46wlkg313" path="res://Assets/audio_assets/sfx/sword.mp3" id="16_bxcpb"]
+[ext_resource type="AudioStream" uid="uid://cf2swjtvpu2x6" path="res://Assets/audio_assets/sfx/block.mp3" id="17_bxcpb"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vc5aa"]
 atlas = ExtResource("1_t6ptf")
@@ -578,13 +582,16 @@ size = Vector2(96, 43)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8rpoh"]
 size = Vector2(209, 57)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2thta"]
+size = Vector2(20, 2)
+
 [node name="enemy_character" type="CharacterBody2D" groups=["enemy"]]
 script = ExtResource("1_nkyop")
 
 [node name="enemy_character_sprite" type="AnimatedSprite2D" parent="." groups=["enemy"]]
 position = Vector2(4, 16)
 sprite_frames = SubResource("SpriteFrames_sd2f7")
-animation = &"attack_animation_walk"
+animation = &"idle_animation"
 autoplay = "idle_animation"
 script = ExtResource("11_nkyop")
 
@@ -621,6 +628,30 @@ collision_mask = 255
 position = Vector2(0, 28)
 shape = SubResource("RectangleShape2D_8rpoh")
 
+[node name="head_shape" type="Area2D" parent="."]
+
+[node name="head_collider" type="CollisionShape2D" parent="head_shape"]
+position = Vector2(0, 8)
+shape = SubResource("RectangleShape2D_2thta")
+
+[node name="sfx" type="Node" parent="."]
+
+[node name="death" type="AudioStreamPlayer2D" parent="sfx"]
+stream = ExtResource("14_ympax")
+
+[node name="walking_sfx" type="AudioStreamPlayer2D" parent="sfx"]
+stream = ExtResource("15_4u8wx")
+pitch_scale = 2.75
+parameters/looping = true
+
+[node name="sword_sfx" type="AudioStreamPlayer2D" parent="sfx"]
+stream = ExtResource("16_bxcpb")
+pitch_scale = 1.05
+
+[node name="block_sfx" type="AudioStreamPlayer2D" parent="sfx"]
+stream = ExtResource("17_bxcpb")
+
 [connection signal="body_entered" from="attack_collider" to="." method="_on_attack_collider_body_entered"]
 [connection signal="body_exited" from="attack_collider" to="." method="_on_attack_collider_body_exited"]
 [connection signal="body_entered" from="player_detector" to="." method="_on_player_detector_body_entered"]
+[connection signal="body_entered" from="head_shape" to="." method="_on_head_shape_body_entered"]

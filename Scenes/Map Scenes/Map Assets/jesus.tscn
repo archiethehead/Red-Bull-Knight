@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://de8qmnrwk6fih"]
+
+[ext_resource type="Texture2D" uid="uid://cjf8g7xb5a7gi" path="res://Assets/map_assets/jesus.jpg" id="1_6eoi7"]
+[ext_resource type="Script" uid="uid://cnnv5dskee2ut" path="res://Scripts/Map Scripts/jesus.gd" id="1_iu110"]
+[ext_resource type="AudioStream" uid="uid://dc1h27qknqh7x" path="res://Assets/audio_assets/sfx/jesus.mp3" id="1_teeuu"]
+
+[node name="jesus" type="CanvasLayer"]
+scale = Vector2(3.84, 3.24)
+transform = Transform2D(3.84, 0, 0, 3.24, 0, 0)
+script = ExtResource("1_iu110")
+
+[node name="jesus_bell" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("1_teeuu")
+
+[node name="jesus_sprite" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(314.583, 142.852)
+scale = Vector2(1, 1.00617)
+texture = ExtResource("1_6eoi7")
+offset = Vector2(-164.583, -41.9753)

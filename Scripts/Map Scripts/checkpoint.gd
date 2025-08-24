@@ -6,3 +6,5 @@ func _on_checkpoint_area_body_entered(body):
 		texture = null
 		GameState._checkpoint(self)
 		$checkpoint_label.visible = true
+		
+		

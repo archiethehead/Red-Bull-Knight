@@ -1,4 +1,4 @@
-[gd_scene load_steps=102 format=3 uid="uid://0rfuwdjdrqfs"]
+[gd_scene load_steps=104 format=3 uid="uid://0rfuwdjdrqfs"]
 
 [ext_resource type="Script" uid="uid://cd0ml4w5q8q7l" path="res://Scripts/Player Scripts/player_character.gd" id="1_cmdk4"]
 [ext_resource type="Texture2D" uid="uid://deep0mqqys2ef" path="res://Assets/player_assets/Colour1/Outline/120x80_PNGSheets/_Idle.png" id="1_qcwfp"]
@@ -15,6 +15,8 @@
 [ext_resource type="Texture2D" uid="uid://bryqer4hhg0ss" path="res://Assets/player_assets/Colour1/Outline/120x80_PNGSheets/_Attack2.png" id="5_pypdw"]
 [ext_resource type="Script" uid="uid://cnur61mux2nxy" path="res://Scripts/Player Scripts/character_animations.gd" id="9_ev8tq"]
 [ext_resource type="Texture2D" uid="uid://b1xfek06i5m42" path="res://Assets/player_assets/Colour1/Outline/120x80_PNGSheets/_Death.png" id="10_ssqd1"]
+[ext_resource type="AudioStream" uid="uid://oujvse2yt3bx" path="res://Assets/audio_assets/sfx/walking.mp3" id="16_ihs1r"]
+[ext_resource type="AudioStream" uid="uid://cyvu46wlkg313" path="res://Assets/audio_assets/sfx/sword.mp3" id="17_yn7vp"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jrg1e"]
 atlas = ExtResource("2_qdpu1")
@@ -399,6 +401,15 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_dioqq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dioqq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dioqq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dioqq")
 }],
 "loop": false,
 "name": &"attack_animation",
@@ -419,6 +430,15 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_qjhko")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gdjje")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gdjje")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gdjje")
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_gdjje")
@@ -678,7 +698,7 @@ script = ExtResource("1_cmdk4")
 [node name="player_character_sprite" type="AnimatedSprite2D" parent="." groups=["player"]]
 position = Vector2(1, 2)
 sprite_frames = SubResource("SpriteFrames_q5hbr")
-animation = &" roll_animation"
+animation = &"attack_animation_2"
 autoplay = "idle_animation"
 script = ExtResource("9_ev8tq")
 
@@ -702,6 +722,17 @@ collision_mask = 255
 [node name="attack_collider" type="CollisionShape2D" parent="hitbox" groups=["player"]]
 position = Vector2(0.5, 22.5)
 shape = SubResource("RectangleShape2D_ev8tq")
+
+[node name="sfx" type="Node" parent="."]
+
+[node name="walking_sfx" type="AudioStreamPlayer2D" parent="sfx"]
+stream = ExtResource("16_ihs1r")
+pitch_scale = 2.75
+parameters/looping = true
+
+[node name="sword_sfx" type="AudioStreamPlayer2D" parent="sfx"]
+stream = ExtResource("17_yn7vp")
+pitch_scale = 1.05
 
 [connection signal="body_entered" from="hitbox" to="." method="_on_hitbox_body_entered"]
 [connection signal="body_exited" from="hitbox" to="." method="_on_hitbox_body_exited"]

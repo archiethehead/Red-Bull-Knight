@@ -87,6 +87,7 @@ func _attack_player():
 			GameState._update_health(-1)
 		can_attack = false
 		if player.blocking == true:
+			$sfx/block_sfx.play()
 			player.blocking = false
 			player.block_cooldown = true
 		$enemy_character_sprite._attack_animation(velocity, attack_2, CROUCHED, dead)
@@ -95,12 +96,13 @@ func _attack_player():
 		attack_2 = !attack_2
 
 func _die():
+	$sfx/death.play()
 	dead = true
 	velocity.x = 0
 	velocity.y = 0
-	$body_collider.disabled = true
 	$enemy_character_sprite._death_animation()
-	await get_tree().create_timer(3).timeout
+	$body_collider.set_deferred("disabled", true)
+	$head_shape/head_collider.set_deferred("disabled", true)
 
 func _on_player_detector_body_entered(body):
 	if body.is_in_group("player"):
@@ -115,3 +117,9 @@ func _on_attack_collider_body_entered(body):
 func _on_attack_collider_body_exited(body):
 	if body.is_in_group("player"):
 		player_attackable = false
+
+
+func _on_head_shape_body_entered(body):
+	if body.is_in_group("player") and player.velocity.y >= 0:
+		player.velocity.y = (JUMP_VELOCITY * 1.25)
+		call_deferred("_die")

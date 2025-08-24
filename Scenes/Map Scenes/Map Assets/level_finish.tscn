@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://r28ltqyoq8uh"]
+
+[ext_resource type="Texture2D" uid="uid://db268sfxv4kvx" path="res://Assets/map_assets/flag_pole.png" id="1_jhrt7"]
+[ext_resource type="Script" uid="uid://jn1ip2rg8rqc" path="res://Scripts/Map Scripts/level_finish.gd" id="2_347kk"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_347kk"]
+size = Vector2(180, 360)
+
+[node name="level_finish" type="Sprite2D"]
+scale = Vector2(0.1, 0.0944444)
+texture = ExtResource("1_jhrt7")
+script = ExtResource("2_347kk")
+
+[node name="level_finish_area" type="Area2D" parent="."]
+
+[node name="level_finish_collider" type="CollisionShape2D" parent="level_finish_area"]
+position = Vector2(9.53674e-06, 4.03909e-05)
+shape = SubResource("RectangleShape2D_347kk")
+
+[connection signal="body_entered" from="level_finish_area" to="." method="_on_level_finish_area_body_entered"]

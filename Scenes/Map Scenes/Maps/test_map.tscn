@@ -1,15 +1,18 @@
-[gd_scene load_steps=14 format=3 uid="uid://cto5vhf8je43u"]
+[gd_scene load_steps=17 format=3 uid="uid://cto5vhf8je43u"]
 
 [ext_resource type="Texture2D" uid="uid://drvjwf4btxikl" path="res://Assets/map_assets/Dungeon Tile Set.png" id="1_yx20t"]
 [ext_resource type="Script" uid="uid://bsxuq4eyhr3d6" path="res://Scripts/Map Scripts/Maps/test_map.gd" id="2_kpyq2"]
 [ext_resource type="AudioStream" uid="uid://byuydt2phak4l" path="res://Assets/audio_assets/Level_1.mp3" id="2_lvb5c"]
-[ext_resource type="PackedScene" uid="uid://0rfuwdjdrqfs" path="res://Scenes/characters/player_character.tscn" id="3_mt3ia"]
-[ext_resource type="PackedScene" uid="uid://dxpndiwc6r55m" path="res://Scenes/characters/enemy_character.tscn" id="4_ufb8e"]
+[ext_resource type="PackedScene" uid="uid://0rfuwdjdrqfs" path="res://Scenes/Character Scenes/player_character.tscn" id="3_mt3ia"]
+[ext_resource type="PackedScene" uid="uid://dxpndiwc6r55m" path="res://Scenes/Character Scenes/enemy_character.tscn" id="4_ufb8e"]
 [ext_resource type="PackedScene" uid="uid://dpyidhh5jptpv" path="res://Scenes/Map Scenes/Map Assets/zill_zone.tscn" id="5_ufb8e"]
 [ext_resource type="PackedScene" uid="uid://0uldvs6gsiqw" path="res://Scenes/Game Scenes/game_state_ui.tscn" id="7_bdm0q"]
 [ext_resource type="PackedScene" uid="uid://cf47rws7ojlfr" path="res://Scenes/Map Scenes/Map Assets/red_bull.tscn" id="8_wnxao"]
 [ext_resource type="PackedScene" uid="uid://bmu67w1r0anm3" path="res://Scenes/Game Scenes/pause_menu.tscn" id="9_h7fm2"]
 [ext_resource type="PackedScene" uid="uid://doaxa1g3ok7k5" path="res://Scenes/Map Scenes/Map Assets/checkpoint.tscn" id="10_kpyq2"]
+[ext_resource type="PackedScene" uid="uid://r28ltqyoq8uh" path="res://Scenes/Map Scenes/Map Assets/level_finish.tscn" id="11_dlvbb"]
+[ext_resource type="PackedScene" uid="uid://dnpcnvlic8slx" path="res://Scenes/Game Scenes/death_menu.tscn" id="12_bgkk8"]
+[ext_resource type="PackedScene" uid="uid://de8qmnrwk6fih" path="res://Scenes/Map Scenes/Map Assets/jesus.tscn" id="13_ldph6"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lvb5c"]
 texture = ExtResource("1_yx20t")
@@ -183,10 +186,16 @@ script = ExtResource("2_kpyq2")
 [node name="red_bull" parent="red_bull_cans" instance=ExtResource("8_wnxao")]
 position = Vector2(143, -56)
 
+[node name="red_bull2" parent="red_bull_cans" instance=ExtResource("8_wnxao")]
+position = Vector2(162, -56)
+
+[node name="red_bull3" parent="red_bull_cans" instance=ExtResource("8_wnxao")]
+position = Vector2(179, -56)
+
 [node name="player_character" parent="." instance=ExtResource("3_mt3ia")]
 light_mask = 2
 visibility_layer = 4
-position = Vector2(422, -92)
+position = Vector2(403, -89)
 
 [node name="game_camera" type="Camera2D" parent="player_character"]
 position = Vector2(-3, 12)
@@ -220,6 +229,13 @@ position = Vector2(785, -105)
 [node name="checkpoints" type="Node" parent="."]
 
 [node name="checkpoint" parent="checkpoints" instance=ExtResource("10_kpyq2")]
-position = Vector2(932, -66)
+position = Vector2(-50, 15)
 
 [node name="game_state_UI" parent="." instance=ExtResource("7_bdm0q")]
+
+[node name="level_finish" parent="." instance=ExtResource("11_dlvbb")]
+position = Vector2(928, -65)
+
+[node name="death_menu" parent="." instance=ExtResource("12_bgkk8")]
+
+[node name="jesus" parent="." instance=ExtResource("13_ldph6")]

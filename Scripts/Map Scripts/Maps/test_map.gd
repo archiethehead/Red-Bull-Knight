@@ -8,6 +8,10 @@ func _ready() -> void:
 	GameState.player_character = $player_character
 	GameState.game_UI = $game_state_UI
 	GameState.pause_menu = $pause_menu
+	GameState.current_map = self
+	GameState.next_map = "res://Scenes/Game Scenes/main_menu.tscn"
+	GameState.death_menu = $death_menu
+	GameState.damage_screen = $jesus
 	
 	if not GameState.reloading:
 		GameState.checkpoint = $player_character.global_position
@@ -20,6 +24,8 @@ func _ready() -> void:
 	if GameState.reloading:
 		$player_character.global_position = GameState.checkpoint
 		$player_character.global_position.y -= 50
+		$player_character/game_camera.global_position = GameState.checkpoint
+		$player_character/game_camera.global_position.y -= 40
 		
 		#Kill enemies on reload
 		if len(GameState.enemies_killed) > 0:

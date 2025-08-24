@@ -1,5 +1,8 @@
 extends AnimatedSprite2D
 
+@onready var walking_sfx: AudioStreamPlayer2D = $"../sfx/walking_sfx"
+@onready var sword_sfx: AudioStreamPlayer2D = $"../sfx/sword_sfx"
+
 #Animation handler
 func _update_animation(vel, grounded, crouched, attack, roll, dead):
 	var run = "run_animation"
@@ -21,15 +24,21 @@ func _update_animation(vel, grounded, crouched, attack, roll, dead):
 		if attack == true:
 			if roll == false:
 				play(run)
+				if walking_sfx.is_playing() == false:
+					walking_sfx.play()
 			elif roll == true:
 				play(" roll_animation")
 				await animation_finished
 	else:
 		if attack == true and not dead:
+			if walking_sfx.is_playing():
+				walking_sfx.stop()
 			play(idle)
 	
 	#Jump/Fall animation
 	if not grounded and not dead:
+		if walking_sfx.is_playing():
+				walking_sfx.stop()
 		if vel.y < 0:
 			play("jump_animation")
 		elif vel.y > 0:
@@ -37,6 +46,7 @@ func _update_animation(vel, grounded, crouched, attack, roll, dead):
 
 #Attack animation
 func _attack_animation(vel, attack_an, crouched):
+	sword_sfx.play()
 	if crouched == true:
 		play("attack_animation_crouched")
 	else:
